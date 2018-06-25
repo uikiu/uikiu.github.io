@@ -1,0 +1,498 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>android001 之 base sdk使用指南 | android001欢迎您</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="android001">
+    
+
+    
+    <meta name="description" content="本sdk对第三方的依赖 fastJson httpClient  json请求json请求参数说明在json请求当中，我们设计的非常灵活。无论是请求体设置、响应体设置、回调通知均非常的灵活。  先说请求体，我们在发起请求的时候，有的有请求体有的可能没有请求体，如果有请求体我们将其定为泛型T，由用户根据接口需求指定请求体对象。 响应体定义为泛型M，根据接口返回数据由定义。 使用不同回调接口。   最">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android001 之 base sdk使用指南">
+<meta property="og:url" content="http://yoursite.com/2018/06/24/android001Base/index.html">
+<meta property="og:site_name" content="android001欢迎您">
+<meta property="og:description" content="本sdk对第三方的依赖 fastJson httpClient  json请求json请求参数说明在json请求当中，我们设计的非常灵活。无论是请求体设置、响应体设置、回调通知均非常的灵活。  先说请求体，我们在发起请求的时候，有的有请求体有的可能没有请求体，如果有请求体我们将其定为泛型T，由用户根据接口需求指定请求体对象。 响应体定义为泛型M，根据接口返回数据由定义。 使用不同回调接口。   最">
+<meta property="og:image" content="http://yoursite.com/2018/06/24/android001Base/images/jsonRequest.png">
+<meta property="og:updated_time" content="2018-06-25T07:36:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android001 之 base sdk使用指南">
+<meta name="twitter:description" content="本sdk对第三方的依赖 fastJson httpClient  json请求json请求参数说明在json请求当中，我们设计的非常灵活。无论是请求体设置、响应体设置、回调通知均非常的灵活。  先说请求体，我们在发起请求的时候，有的有请求体有的可能没有请求体，如果有请求体我们将其定为泛型T，由用户根据接口需求指定请求体对象。 响应体定义为泛型M，根据接口返回数据由定义。 使用不同回调接口。   最">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/24/android001Base/images/jsonRequest.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="android001欢迎您" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="android001欢迎您" title="android001欢迎您"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="android001欢迎您">android001欢迎您</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/06/24/android001Base/" title="android001 之 base sdk使用指南" itemprop="url">android001 之 base sdk使用指南</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="android001" target="_blank" itemprop="author">android001</a>
+		
+  <p class="article-time">
+    <time datetime="2018-06-24T10:51:35.000Z" itemprop="datePublished"> Published 2018-06-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本sdk对第三方的依赖"><span class="toc-number">1.</span> <span class="toc-text">本sdk对第三方的依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#json请求"><span class="toc-number">2.</span> <span class="toc-text">json请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#json请求参数说明"><span class="toc-number">2.0.1.</span> <span class="toc-text">json请求参数说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#json请求使用"><span class="toc-number">2.0.2.</span> <span class="toc-text">json请求使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载download"><span class="toc-number">3.</span> <span class="toc-text">下载download</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载需要的必然条件，也就是本sdk需要用户确定的参数："><span class="toc-number">3.0.1.</span> <span class="toc-text">下载需要的必然条件，也就是本sdk需要用户确定的参数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#回调接口信息"><span class="toc-number">3.0.2.</span> <span class="toc-text">回调接口信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何使用下载服务"><span class="toc-number">3.0.3.</span> <span class="toc-text">如何使用下载服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行下载后回调接口"><span class="toc-number">3.0.4.</span> <span class="toc-text">执行下载后回调接口</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传upload"><span class="toc-number">4.</span> <span class="toc-text">上传upload</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#上传需要的必然条件，也就是本sdk需要用户确定的参数："><span class="toc-number">4.0.1.</span> <span class="toc-text">上传需要的必然条件，也就是本sdk需要用户确定的参数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#两种回调接口信息"><span class="toc-number">4.0.2.</span> <span class="toc-text">两种回调接口信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#上传文件使用"><span class="toc-number">4.0.3.</span> <span class="toc-text">上传文件使用</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="本sdk对第三方的依赖"><a href="#本sdk对第三方的依赖" class="headerlink" title="本sdk对第三方的依赖"></a>本sdk对第三方的依赖</h2><ul>
+<li>fastJson</li>
+<li>httpClient</li>
+</ul>
+<h2 id="json请求"><a href="#json请求" class="headerlink" title="json请求"></a>json请求</h2><h4 id="json请求参数说明"><a href="#json请求参数说明" class="headerlink" title="json请求参数说明"></a>json请求参数说明</h4><p>在json请求当中，我们设计的非常灵活。无论是请求体设置、响应体设置、回调通知均非常的灵活。<br></p>
+<ol>
+<li>先说请求体，我们在发起请求的时候，有的有请求体有的可能没有请求体，如果有请求体我们将其定为泛型T，由用户根据接口需求指定请求体对象。<br></li>
+<li>响应体定义为泛型M，根据接口返回数据由定义。<br></li>
+<li><strong>使用不同回调接口</strong>。<br></li>
+</ol>
+<ul>
+<li><p><strong>最简单回调接口</strong>:仅回调成功与失败,使用：com.android001.net.http.json.userIJsonCallable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface IJsonCallable&lt;M&gt; &#123;</span><br><span class="line">    public void onSuccess(M m);</span><br><span class="line"></span><br><span class="line">    public void onFailed(int errorCode, String errorMsg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>最全回调接口</strong>:回调所有请求和响应信息：com.android001.net.http.json.user.IJsonHttpCallable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">public interface IJsonHttpCallable&lt;M&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 成功</span><br><span class="line">     *</span><br><span class="line">     * @param m</span><br><span class="line">     */</span><br><span class="line">    public void onSuccess(M m);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * sdk异常</span><br><span class="line">     *</span><br><span class="line">     * @param errorCode</span><br><span class="line">     */</span><br><span class="line">    public void onHttpRequestError(int errorCode);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 服务器状态异常：返回的非200-300之间的数</span><br><span class="line">     *</span><br><span class="line">     * @param errorCode</span><br><span class="line">     */</span><br><span class="line">    public void onResponseCodeError(int errorCode);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 服务器数据异常：返回数据</span><br><span class="line">     *</span><br><span class="line">     * @param errorCode</span><br><span class="line">     * @param msg</span><br><span class="line">     * @param m</span><br><span class="line">     */</span><br><span class="line">    public void onResponseDataError(String errorCode, String msg, M m);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 添加请求头</span><br><span class="line">     *</span><br><span class="line">     * @param requestHeaderMap</span><br><span class="line">     */</span><br><span class="line">    public void addRequestHeader(Map&lt;String, String&gt; requestHeaderMap);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获得响应头</span><br><span class="line">     *</span><br><span class="line">     * @param responseHeaderMap</span><br><span class="line">     */</span><br><span class="line">    public void onResponseHeader(Map&lt;String, String&gt; responseHeaderMap);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 设置请求参数</span><br><span class="line">     *</span><br><span class="line">     * @param requestConfig</span><br><span class="line">     */</span><br><span class="line">    public void setRequestConfig(RequestConfig requestConfig);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>请求配置回调接口</strong>:回调基本信息以及请求配置：com.android001.net.http.core.request.config.RequestConfig.ICustomRequestConfigCallable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public interface ICustomRequestConfigCallable&lt;M&gt; &#123;</span><br><span class="line">    public void onSuccess(M data);</span><br><span class="line"></span><br><span class="line">    public void onFailed(int errorCode, String errorMsg);</span><br><span class="line"></span><br><span class="line">    public void setRequestConfig(RequestConfig requestConfig);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>请求头回调接口</strong>:回调基本信息以及请求头：com.android001.net.http.json.user.ICustomHeaderHttpCallable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public interface ICustomHeaderHttpCallable&lt;M&gt; &#123;</span><br><span class="line">    public void onSuccess(M m);</span><br><span class="line"></span><br><span class="line">    public void onFailed(int errorCode, String errorMsg);</span><br><span class="line"></span><br><span class="line">    public void addRequestHeader(Map&lt;String, String&gt; headerMap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>请求配置和请求头回调接口</strong>:回调基本信息以及请求头和请求配置参数：com.android001.net.http.json.user.ICustomHttpCallable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface ICustomHttpCallable&lt;M&gt;</span><br><span class="line">        extends ICustomHeaderHttpCallable&lt;M&gt;,</span><br><span class="line">        ICustomRequestConfigCallable&lt;M&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>说明：如果你想最近单的最快捷的使用，那么使用IJsonCallable接口即可。如果你想自定义回调内容，那么使用最全回调接口IJsonHttpCallable，然后自己再筛选即可。</strong></p>
+<h4 id="json请求使用"><a href="#json请求使用" class="headerlink" title="json请求使用"></a>json请求使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;T extends java.io.Serializable, M&gt; void sendRequest(T requestInfo, java.lang.String url, java.lang.Class&lt;M&gt; responseClass, com.android001.net.http.json.user.IJsonCallable&lt;M&gt; httpCallable)</span><br><span class="line"></span><br><span class="line">public static &lt;M&gt; void sendRequest(java.lang.String url, java.lang.Class&lt;M&gt; responseClass, com.android001.net.http.json.user.IJsonCallable&lt;M&gt; httpCallable)</span><br><span class="line"></span><br><span class="line">public static &lt;T extends java.io.Serializable, M&gt; void sendRequest(T requestInfo, java.lang.String url, java.lang.Class&lt;M&gt; responseClass, com.android001.net.http.json.user.IJsonHttpCallable&lt;M&gt; httpCallable)</span><br><span class="line"></span><br><span class="line">public static &lt;M&gt; void sendRequest(java.lang.String url, java.lang.Class&lt;M&gt; responseClass, com.android001.net.http.json.user.IJsonHttpCallable&lt;M&gt; httpCallable)</span><br><span class="line"></span><br><span class="line">public static &lt;T extends java.io.Serializable, M&gt; void sendRequest(T requestInfo, java.lang.String url, java.lang.Class&lt;M&gt; responseClass, com.android001.net.http.json.user.ICustomRequestParamsCallable&lt;M&gt; httpCallable)</span><br><span class="line">public static &lt;M&gt; void sendRequest(java.lang.String url, java.lang.Class&lt;M&gt; responseClass, com.android001.net.http.json.user.ICustomRequestParamsCallable&lt;M&gt; httpCallable)</span><br><span class="line"></span><br><span class="line">public static &lt;T extends java.io.Serializable, M&gt; void sendRequest(T requestInfo, java.lang.String url, java.lang.Class&lt;M&gt; responseClass, com.android001.net.http.json.user.ICustomHttpCallable&lt;M&gt; httpCallable)</span><br><span class="line"></span><br><span class="line">public static &lt;M&gt; void sendRequest(java.lang.String url, java.lang.Class&lt;M&gt; responseClass, com.android001.net.http.json.user.ICustomHttpCallable&lt;M&gt; httpCallable)</span><br><span class="line"></span><br><span class="line">public static &lt;T extends java.io.Serializable, M&gt; void sendRequest(T requestInfo, java.lang.String url, java.lang.Class&lt;M&gt; responseClass, com.android001.net.http.json.user.ICustomHeaderHttpCallable&lt;M&gt; httpCallable)</span><br><span class="line"></span><br><span class="line">public static &lt;M&gt; void sendRequest(java.lang.String url, java.lang.Class&lt;M&gt; responseClass, com.android001.net.http.json.user.ICustomHeaderHttpCallable&lt;M&gt; httpCallable)</span><br></pre></td></tr></table></figure>
+<p><img src="images/jsonRequest.png" alt="json请求示例"></p>
+<hr>
+<h2 id="下载download"><a href="#下载download" class="headerlink" title="下载download"></a>下载download</h2><h4 id="下载需要的必然条件，也就是本sdk需要用户确定的参数："><a href="#下载需要的必然条件，也就是本sdk需要用户确定的参数：" class="headerlink" title="下载需要的必然条件，也就是本sdk需要用户确定的参数："></a>下载需要的必然条件，也就是本sdk需要用户确定的参数：</h4><ul>
+<li>下载url</li>
+<li>请求体T requestInfo</li>
+<li>保存文件地址path</li>
+<li>线程池配置信息(用户不配置可直接使用默认项)<h4 id="回调接口信息"><a href="#回调接口信息" class="headerlink" title="回调接口信息"></a>回调接口信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * DownloadService执行下载，IDownloadServiceCallable回调通知下载状态、结果。</span><br><span class="line"> * 本接口，面向用户，回调给用户。</span><br><span class="line"> */</span><br><span class="line">public interface IDownloadServiceCallable &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 下载状态变更</span><br><span class="line">     *</span><br><span class="line">     * @param downloadItemInfo DownloadItemInfo内部的DownloadStatus变更。</span><br><span class="line">     */</span><br><span class="line">    public void onDownloadStatusChanged(DownloadItemInfo downloadItemInfo);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 可读取到的总长度：本地文件+本次可从输入流中读取到的长度。</span><br><span class="line">     * 当单线程下载整个文件时:本地文件长度是固定的，本次从输入流中读取到的长度是固定的，所以就定下来文件的总长度了。</span><br><span class="line">     * 但是当多线程分段下载时:这个值是不固定的。</span><br><span class="line">     *</span><br><span class="line">     * @param downloadItemInfo DownloadItemInfo内部的totalLength 文件总大小</span><br><span class="line">     * @param downloadItemInfo DownloadItemInfo内部的currentLength 之前已经下载的文件大小</span><br><span class="line">     */</span><br><span class="line">    public void onTotalLengthReceived(DownloadItemInfo downloadItemInfo);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param downloadItemInfo 下载信息</span><br><span class="line">     * @param downloadPercent  当前下载百分比</span><br><span class="line">     * @param speed            当前速度</span><br><span class="line">     */</span><br><span class="line">    public void onCurrentSizeChanged(DownloadItemInfo downloadItemInfo, double downloadPercent, long speed);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 下载成功</span><br><span class="line">     *</span><br><span class="line">     * @param downloadItemInfo 下载信息</span><br><span class="line">     */</span><br><span class="line">    public void onDownloadSuccess(DownloadItemInfo downloadItemInfo);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 下载暂停</span><br><span class="line">     *</span><br><span class="line">     * @param downloadItemInfo 下载信息</span><br><span class="line">     */</span><br><span class="line">    public void onDownloadPause(DownloadItemInfo downloadItemInfo);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 下载失败</span><br><span class="line">     *</span><br><span class="line">     * @param downloadItemInfo 下载信息</span><br><span class="line">     * @param errorCode        错误码</span><br><span class="line">     * @param errorMsg         错误信息</span><br><span class="line">     */</span><br><span class="line">    public void onDownloadError(DownloadItemInfo downloadItemInfo, int errorCode, String errorMsg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="如何使用下载服务"><a href="#如何使用下载服务" class="headerlink" title="如何使用下载服务"></a>如何使用下载服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//1. 初始化下载服务</span><br><span class="line">com.android001.aitest.net.download.single.downloadService  downloadService = new DownloadServiceImpl(IDownloadServiceCallable);</span><br><span class="line">//2. 执行下载</span><br><span class="line">simpleDownloadInfo = downloadService.download(</span><br><span class="line">                Const.URL_WEXIN,</span><br><span class="line">                filePath,</span><br><span class="line">                T requestInfo,</span><br><span class="line">                DefaultPoolParameter.getInstance()</span><br><span class="line">        );</span><br><span class="line">//3. 暂停下载</span><br><span class="line"> downloadService.pause(simpleDownloadInfo, new IPauseCallable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onSuccess(SimpleDownloadInfo&lt;?&gt; simpleDownloadInfo) &#123;</span><br><span class="line">                log(&quot; pauseDownload success&quot;);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onFailed(SimpleDownloadInfo&lt;?&gt; simpleDownloadInfo, int errorCode, String errorMsg) &#123;</span><br><span class="line">                log(&quot; pauseDownload failed&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">//4. 取消下载</span><br><span class="line">downloadService.cancel(simpleDownloadInfo, new ICancelCallable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onSuccess(SimpleDownloadInfo&lt;?&gt; simpleDownloadInfo) &#123;</span><br><span class="line">                log(&quot; cancelDownload success&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onFailed(SimpleDownloadInfo&lt;?&gt; simpleDownloadInfo, int errorCode, String errorMsg) &#123;</span><br><span class="line">                log(&quot; cancelDownload success&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="执行下载后回调接口"><a href="#执行下载后回调接口" class="headerlink" title="执行下载后回调接口"></a>执行下载后回调接口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * DownloadService执行下载，IDownloadServiceCallable回调通知下载状态、结果。</span><br><span class="line"> * 本接口，面向用户，回调给用户。</span><br><span class="line"> */</span><br><span class="line">public interface IDownloadServiceCallable &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 下载状态变更</span><br><span class="line">     *</span><br><span class="line">     * @param downloadItemInfo DownloadItemInfo内部的DownloadStatus变更。</span><br><span class="line">     */</span><br><span class="line">    public void onDownloadStatusChanged(DownloadItemInfo downloadItemInfo);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 可读取到的总长度：本地文件+本次可从输入流中读取到的长度。</span><br><span class="line">     * 当单线程下载整个文件时:本地文件长度是固定的，本次从输入流中读取到的长度是固定的，所以就定下来文件的总长度了。</span><br><span class="line">     * 但是当多线程分段下载时:这个值是不固定的。</span><br><span class="line">     *</span><br><span class="line">     * @param downloadItemInfo DownloadItemInfo内部的totalLength 文件总大小</span><br><span class="line">     * @param downloadItemInfo DownloadItemInfo内部的currentLength 之前已经下载的文件大小</span><br><span class="line">     */</span><br><span class="line">    public void onTotalLengthReceived(DownloadItemInfo downloadItemInfo);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param downloadItemInfo 下载信息</span><br><span class="line">     * @param downloadPercent  当前下载百分比</span><br><span class="line">     * @param speed            当前速度</span><br><span class="line">     */</span><br><span class="line">    public void onCurrentSizeChanged(DownloadItemInfo downloadItemInfo, double downloadPercent, long speed);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 下载成功</span><br><span class="line">     *</span><br><span class="line">     * @param downloadItemInfo 下载信息</span><br><span class="line">     */</span><br><span class="line">    public void onDownloadSuccess(DownloadItemInfo downloadItemInfo);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 下载暂停</span><br><span class="line">     *</span><br><span class="line">     * @param downloadItemInfo 下载信息</span><br><span class="line">     */</span><br><span class="line">    public void onDownloadPause(DownloadItemInfo downloadItemInfo);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 下载失败</span><br><span class="line">     *</span><br><span class="line">     * @param downloadItemInfo 下载信息</span><br><span class="line">     * @param errorCode        错误码</span><br><span class="line">     * @param errorMsg         错误信息</span><br><span class="line">     */</span><br><span class="line">    public void onDownloadError(DownloadItemInfo downloadItemInfo, int errorCode, String errorMsg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="上传upload"><a href="#上传upload" class="headerlink" title="上传upload"></a>上传upload</h2><h4 id="上传需要的必然条件，也就是本sdk需要用户确定的参数："><a href="#上传需要的必然条件，也就是本sdk需要用户确定的参数：" class="headerlink" title="上传需要的必然条件，也就是本sdk需要用户确定的参数："></a>上传需要的必然条件，也就是本sdk需要用户确定的参数：</h4><ul>
+<li>上传url</li>
+<li>上传文件file</li>
+<li>上传请求头信息Map<string, string=""> uploadParams</string,></li>
+<li>回调上传结果：Class<m> clazz, IUploadCallable<m> uploadCallable</m></m></li>
+</ul>
+<h4 id="两种回调接口信息"><a href="#两种回调接口信息" class="headerlink" title="两种回调接口信息"></a>两种回调接口信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//1.上传成功与否</span><br><span class="line">public interface IUploadCallable&lt;M&gt; &#123;</span><br><span class="line">    public void onSuccess(M dataEntity, String filePath);</span><br><span class="line"></span><br><span class="line">    public void onFailed(int errorCode, String errorMsg, String filePath);</span><br><span class="line">&#125;</span><br><span class="line">//2.上传成功、失败、大小</span><br><span class="line">public interface IUploadResumeCallable&lt;M&gt;</span><br><span class="line">extends IUploadCallable&lt;M&gt; &#123;</span><br><span class="line">    public void onSizeChange(long transferred);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="上传文件使用"><a href="#上传文件使用" class="headerlink" title="上传文件使用"></a>上传文件使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">package com.android001.net.http.upload;</span><br><span class="line"></span><br><span class="line">public class UploadServiceImpl &#123;</span><br><span class="line">    public static &lt;M&gt; com.android001.net.http.upload.core.IUploadService&lt;M&gt; upload(java.lang.String url, java.io.File file, java.util.Map&lt;java.lang.String,java.lang.String&gt; uploadParams, java.lang.Class&lt;M&gt; clazz, com.android001.net.http.upload.interfaces.IUploadCallable&lt;M&gt; uploadCallable)</span><br><span class="line"></span><br><span class="line">    public static &lt;M&gt; com.android001.net.http.upload.core.IUploadService&lt;M&gt; uploadRandomAccessFile(java.lang.String url, java.io.File file, java.util.Map&lt;java.lang.String,java.lang.String&gt; uploadParams, java.lang.Class&lt;M&gt; clazz, com.android001.net.http.upload.interfaces.IUploadResumeCallable&lt;M&gt; uploadCallable, long offset)</span><br><span class="line"></span><br><span class="line">    public static &lt;M&gt; com.android001.net.http.upload.core.IUploadService&lt;M&gt; upload(java.lang.String url, java.io.File file, java.lang.Class&lt;M&gt; clazz, com.android001.net.http.upload.interfaces.IUploadCallable&lt;M&gt; uploadCallable)</span><br></pre></td></tr></table></figure>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">private void upload(String fileName) &#123;</span><br><span class="line"></span><br><span class="line">      final File uploadDir = new File(Environment.getExternalStorageDirectory(), &quot;upload&quot;);</span><br><span class="line">      File uploadFile = new File(uploadDir, fileName);</span><br><span class="line">      UploadServiceImpl.upload(</span><br><span class="line">              &quot;https://api.github.com/markdown/raw&quot;,</span><br><span class="line">              uploadFile,</span><br><span class="line">              UploadMarkdwon.class,</span><br><span class="line">              new IUploadCallable&lt;UploadMarkdwon&gt;() &#123;</span><br><span class="line">                  @Override</span><br><span class="line">                  public void onSuccess(UploadMarkdwon uploadResult, String filePath) &#123;</span><br><span class="line">                      Logger.e(TAG,&quot;服务端返回结果：&quot;+uploadResult.toString()+&quot;\n&quot;+&quot;上传的文件地址：&quot;+filePath);</span><br><span class="line">                  &#125;</span><br><span class="line"></span><br><span class="line">                  @Override</span><br><span class="line">                  public void onFailed(int errorCode, String errorMsg, String filePath) &#123;</span><br><span class="line">                      Logger.e(TAG,&quot;上传文件失败，错误代码=&quot;+errorCode+&quot;  错误信息：&quot;+errorMsg+&quot;   上传文件地址：&quot;+filePath);</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">      );</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2018/06/24/android001Base/" data-title="android001 之 base sdk使用指南 | android001欢迎您" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/06/24/about_android001/" title="关于android001">
+  <strong>上一篇：</strong><br/>
+  <span>
+  关于android001</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/01/05/hello-world/"  title="Hello World">
+ <strong>下一篇：</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本sdk对第三方的依赖"><span class="toc-number">1.</span> <span class="toc-text">本sdk对第三方的依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#json请求"><span class="toc-number">2.</span> <span class="toc-text">json请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#json请求参数说明"><span class="toc-number">2.0.1.</span> <span class="toc-text">json请求参数说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#json请求使用"><span class="toc-number">2.0.2.</span> <span class="toc-text">json请求使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载download"><span class="toc-number">3.</span> <span class="toc-text">下载download</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载需要的必然条件，也就是本sdk需要用户确定的参数："><span class="toc-number">3.0.1.</span> <span class="toc-text">下载需要的必然条件，也就是本sdk需要用户确定的参数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#回调接口信息"><span class="toc-number">3.0.2.</span> <span class="toc-text">回调接口信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何使用下载服务"><span class="toc-number">3.0.3.</span> <span class="toc-text">如何使用下载服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行下载后回调接口"><span class="toc-number">3.0.4.</span> <span class="toc-text">执行下载后回调接口</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传upload"><span class="toc-number">4.</span> <span class="toc-text">上传upload</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#上传需要的必然条件，也就是本sdk需要用户确定的参数："><span class="toc-number">4.0.1.</span> <span class="toc-text">上传需要的必然条件，也就是本sdk需要用户确定的参数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#两种回调接口信息"><span class="toc-number">4.0.2.</span> <span class="toc-text">两种回调接口信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#上传文件使用"><span class="toc-number">4.0.3.</span> <span class="toc-text">上传文件使用</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,我是android001 <br/>
+			本博客只分享干货</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="android001">android001</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
