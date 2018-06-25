@@ -12,13 +12,13 @@
 
     
     <meta name="description" content="android001 baseDao使用指南baseDao使用起来非常简洁方便。 实体类配置 我们知道实体类是与数据库中的表一一对应的，那么我们如何通过实体类控制表名呢？非常简单，我们只需要在实体类中添加注解：@DbTable(“tableName”)即可。例如：12@DbTable(&amp;quot;tableName&amp;quot;)public class Feeding &amp;#123;   当然了，你">
-<meta name="keywords" content="数据库">
+<meta name="keywords" content="database">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android数据库 android001_baseDao sdk使用指南">
 <meta property="og:url" content="http://yoursite.com/2017/11/08/android001Dao/index.html">
 <meta property="og:site_name" content="android001欢迎您">
 <meta property="og:description" content="android001 baseDao使用指南baseDao使用起来非常简洁方便。 实体类配置 我们知道实体类是与数据库中的表一一对应的，那么我们如何通过实体类控制表名呢？非常简单，我们只需要在实体类中添加注解：@DbTable(“tableName”)即可。例如：12@DbTable(&amp;quot;tableName&amp;quot;)public class Feeding &amp;#123;   当然了，你">
-<meta property="og:updated_time" content="2018-06-25T07:59:48.000Z">
+<meta property="og:updated_time" content="2018-06-25T10:52:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android数据库 android001_baseDao sdk使用指南">
 <meta name="twitter:description" content="android001 baseDao使用指南baseDao使用起来非常简洁方便。 实体类配置 我们知道实体类是与数据库中的表一一对应的，那么我们如何通过实体类控制表名呢？非常简单，我们只需要在实体类中添加注解：@DbTable(“tableName”)即可。例如：12@DbTable(&amp;quot;tableName&amp;quot;)public class Feeding &amp;#123;   当然了，你">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="android001欢迎您">android001欢迎您</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -88,14 +88,14 @@
 		<a href="/about" title="android001" target="_blank" itemprop="author">android001</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-08T02:54:00.000Z" itemprop="datePublished"> 发表于 2017-11-08</time>
+    <time datetime="2017-11-08T02:54:00.000Z" itemprop="datePublished"> Published 2017-11-08</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#android001-baseDao使用指南"><span class="toc-number">1.</span> <span class="toc-text">android001 baseDao使用指南</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实体类配置"><span class="toc-number">1.0.1.</span> <span class="toc-text">实体类配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建立对应的数据库关系"><span class="toc-number">1.0.2.</span> <span class="toc-text">建立对应的数据库关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取dao对象"><span class="toc-number">1.0.3.</span> <span class="toc-text">获取dao对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过dao对象执行增删改查"><span class="toc-number">1.0.4.</span> <span class="toc-text">通过dao对象执行增删改查</span></a></li></ol></li></ol></li></ol>
 		
@@ -165,7 +165,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/数据库/">数据库</a>
+  <span></span> <a href="/tags/database/">database</a>
   </div>
 
 </div>
@@ -203,17 +203,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#android001-baseDao使用指南"><span class="toc-number">1.</span> <span class="toc-text">android001 baseDao使用指南</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实体类配置"><span class="toc-number">1.0.1.</span> <span class="toc-text">实体类配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建立对应的数据库关系"><span class="toc-number">1.0.2.</span> <span class="toc-text">建立对应的数据库关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取dao对象"><span class="toc-number">1.0.3.</span> <span class="toc-text">获取dao对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过dao对象执行增删改查"><span class="toc-number">1.0.4.</span> <span class="toc-text">通过dao对象执行增删改查</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -223,15 +223,19 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/数据库/" title="数据库">数据库<sup>1</sup></a></li>
+				<li><a href="/tags/database/" title="database">database<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/base/" title="base">base<sup>1</sup></a></li>
+				<li><a href="/tags/IMEI/" title="IMEI">IMEI<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/NET/" title="NET">NET<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -239,7 +243,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -261,11 +265,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
 </div>
 
@@ -492,7 +496,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
