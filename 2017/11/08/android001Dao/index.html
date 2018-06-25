@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="android001 baseDao使用指南baseDao使用起来非常简洁方便。 实体类配置 我们知道实体类是与数据库中的表一一对应的，那么我们如何通过实体类控制表名呢？非常简单，我们只需要在实体类中添加注解：@DbTable(“tableName”)即可。例如：12@DbTable(&amp;quot;tableName&amp;quot;)public class Feeding &amp;#123;   当然了，你">
+    <meta name="description" content="下载本sdk点我下载 android001 baseDao使用指南baseDao使用起来非常简洁方便。 实体类配置 我们知道实体类是与数据库中的表一一对应的，那么我们如何通过实体类控制表名呢？非常简单，我们只需要在实体类中添加注解：@DbTable(“tableName”)即可。例如：12@DbTable(&amp;quot;tableName&amp;quot;)public class Feeding &amp;#1">
 <meta name="keywords" content="database">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android数据库 android001_baseDao sdk使用指南">
 <meta property="og:url" content="http://yoursite.com/2017/11/08/android001Dao/index.html">
 <meta property="og:site_name" content="android001欢迎您">
-<meta property="og:description" content="android001 baseDao使用指南baseDao使用起来非常简洁方便。 实体类配置 我们知道实体类是与数据库中的表一一对应的，那么我们如何通过实体类控制表名呢？非常简单，我们只需要在实体类中添加注解：@DbTable(“tableName”)即可。例如：12@DbTable(&amp;quot;tableName&amp;quot;)public class Feeding &amp;#123;   当然了，你">
-<meta property="og:updated_time" content="2018-06-25T10:52:25.000Z">
+<meta property="og:description" content="下载本sdk点我下载 android001 baseDao使用指南baseDao使用起来非常简洁方便。 实体类配置 我们知道实体类是与数据库中的表一一对应的，那么我们如何通过实体类控制表名呢？非常简单，我们只需要在实体类中添加注解：@DbTable(“tableName”)即可。例如：12@DbTable(&amp;quot;tableName&amp;quot;)public class Feeding &amp;#1">
+<meta property="og:updated_time" content="2018-06-25T12:15:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android数据库 android001_baseDao sdk使用指南">
-<meta name="twitter:description" content="android001 baseDao使用指南baseDao使用起来非常简洁方便。 实体类配置 我们知道实体类是与数据库中的表一一对应的，那么我们如何通过实体类控制表名呢？非常简单，我们只需要在实体类中添加注解：@DbTable(“tableName”)即可。例如：12@DbTable(&amp;quot;tableName&amp;quot;)public class Feeding &amp;#123;   当然了，你">
+<meta name="twitter:description" content="下载本sdk点我下载 android001 baseDao使用指南baseDao使用起来非常简洁方便。 实体类配置 我们知道实体类是与数据库中的表一一对应的，那么我们如何通过实体类控制表名呢？非常简单，我们只需要在实体类中添加注解：@DbTable(“tableName”)即可。例如：12@DbTable(&amp;quot;tableName&amp;quot;)public class Feeding &amp;#1">
 
     
     <link rel="alternative" href="/atom.xml" title="android001欢迎您" type="application/atom+xml">
@@ -97,11 +97,12 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#android001-baseDao使用指南"><span class="toc-number">1.</span> <span class="toc-text">android001 baseDao使用指南</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实体类配置"><span class="toc-number">1.0.1.</span> <span class="toc-text">实体类配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建立对应的数据库关系"><span class="toc-number">1.0.2.</span> <span class="toc-text">建立对应的数据库关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取dao对象"><span class="toc-number">1.0.3.</span> <span class="toc-text">获取dao对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过dao对象执行增删改查"><span class="toc-number">1.0.4.</span> <span class="toc-text">通过dao对象执行增删改查</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载本sdk"><span class="toc-number">1.</span> <span class="toc-text">下载本sdk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android001-baseDao使用指南"><span class="toc-number">2.</span> <span class="toc-text">android001 baseDao使用指南</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实体类配置"><span class="toc-number">2.0.1.</span> <span class="toc-text">实体类配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建立对应的数据库关系"><span class="toc-number">2.0.2.</span> <span class="toc-text">建立对应的数据库关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取dao对象"><span class="toc-number">2.0.3.</span> <span class="toc-text">获取dao对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过dao对象执行增删改查"><span class="toc-number">2.0.4.</span> <span class="toc-text">通过dao对象执行增删改查</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="android001-baseDao使用指南"><a href="#android001-baseDao使用指南" class="headerlink" title="android001 baseDao使用指南"></a>android001 baseDao使用指南</h2><p>baseDao使用起来非常简洁方便。</p>
+		<h2 id="下载本sdk"><a href="#下载本sdk" class="headerlink" title="下载本sdk"></a>下载本sdk</h2><p><a href="/images/android001_baseDao_release_1.0.0.aar">点我下载</a></p>
+<h2 id="android001-baseDao使用指南"><a href="#android001-baseDao使用指南" class="headerlink" title="android001 baseDao使用指南"></a>android001 baseDao使用指南</h2><p>baseDao使用起来非常简洁方便。</p>
 <h4 id="实体类配置"><a href="#实体类配置" class="headerlink" title="实体类配置"></a>实体类配置</h4><ul>
 <li>我们知道实体类是与数据库中的表一一对应的，那么我们如何通过实体类控制表名呢？非常简单，我们只需要在实体类中添加注解：@DbTable(“tableName”)即可。<br>例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@DbTable(&quot;tableName&quot;)</span><br><span class="line">public class Feeding &#123;</span><br></pre></td></tr></table></figure>
 </li>
@@ -208,7 +209,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#android001-baseDao使用指南"><span class="toc-number">1.</span> <span class="toc-text">android001 baseDao使用指南</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实体类配置"><span class="toc-number">1.0.1.</span> <span class="toc-text">实体类配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建立对应的数据库关系"><span class="toc-number">1.0.2.</span> <span class="toc-text">建立对应的数据库关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取dao对象"><span class="toc-number">1.0.3.</span> <span class="toc-text">获取dao对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过dao对象执行增删改查"><span class="toc-number">1.0.4.</span> <span class="toc-text">通过dao对象执行增删改查</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载本sdk"><span class="toc-number">1.</span> <span class="toc-text">下载本sdk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android001-baseDao使用指南"><span class="toc-number">2.</span> <span class="toc-text">android001 baseDao使用指南</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实体类配置"><span class="toc-number">2.0.1.</span> <span class="toc-text">实体类配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建立对应的数据库关系"><span class="toc-number">2.0.2.</span> <span class="toc-text">建立对应的数据库关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取dao对象"><span class="toc-number">2.0.3.</span> <span class="toc-text">获取dao对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过dao对象执行增删改查"><span class="toc-number">2.0.4.</span> <span class="toc-text">通过dao对象执行增删改查</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
